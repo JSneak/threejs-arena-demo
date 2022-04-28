@@ -45,7 +45,7 @@ const HealthBars = ({ position, name, health }) => {
         <meshBasicMaterial color="black" />
       </Box>
       <Text
-        color="black"
+        color="white"
         anchorX="center"
         anchorY="middle"
         fontSize={0.3}
@@ -55,7 +55,7 @@ const HealthBars = ({ position, name, health }) => {
         {name}
       </Text>
       <Text
-        color="black"
+        color="white"
         anchorX="center"
         anchorY="middle"
         fontSize={0.4}
