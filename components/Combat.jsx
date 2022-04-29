@@ -176,6 +176,8 @@ const Combat = () => {
   const [isOver, setIsOver] = useState(false);
   const [endScreenText, setEndScreenText] = useState("");
 
+  const [index, setIndex] = useState(1);
+
   const firstUpdate = useRef([true]);
 
   useEffect(() => {
@@ -183,7 +185,7 @@ const Combat = () => {
       firstUpdate.current[0] = false;
       return;
     }
-    console.log("Inside First UseEffect");
+    // console.log("Inside First UseEffect");
     checkWinCondition();
   }, [health, enemyHealth]);
 
@@ -193,7 +195,7 @@ const Combat = () => {
       return;
     }
 
-    console.log("In UseEffect", turn);
+    // console.log("In UseEffect", turn);
   }, [turn]);
 
   const Attack = (attackType) => {
@@ -350,6 +352,7 @@ const Combat = () => {
           />
           <Anna
             action={action}
+            index={index}
             position={[-2, -3.5, 0.6]}
             rotation={[Math.PI / 2, 0, -1.5]}
           />
@@ -425,7 +428,7 @@ const Combat = () => {
         {/* End Screen */}
         {isOver ? <EndScreen text={endScreenText} action={() => {}} /> : <></>}
       </Canvas>
-      {/* <div className="controls">
+      <div className="controls">
         <p>Health Controls</p>
         <button
           onClick={() => {
@@ -446,6 +449,7 @@ const Combat = () => {
         <button
           onClick={() => {
             setAction("NeutralIdle");
+            setIndex(5);
           }}
         >
           Idle
@@ -453,6 +457,7 @@ const Combat = () => {
         <button
           onClick={() => {
             setAction("Dance");
+            setIndex(1);
           }}
         >
           Dance
@@ -460,6 +465,7 @@ const Combat = () => {
         <button
           onClick={() => {
             setAction("Attack");
+            setIndex(0);
           }}
         >
           Attack
@@ -467,9 +473,26 @@ const Combat = () => {
         <button
           onClick={() => {
             setAction("Defeat");
+            setIndex(2);
           }}
         >
           Defeat
+        </button>
+        <button
+          onClick={() => {
+            setAction("Hit");
+            setIndex(3);
+          }}
+        >
+          Hit
+        </button>
+        <button
+          onClick={() => {
+            setAction("Miss");
+            setIndex(4);
+          }}
+        >
+          Miss
         </button>
         <br />
         <p>The Enemy</p>
@@ -508,7 +531,7 @@ const Combat = () => {
         >
           Death
         </button>
-      </div> */}
+      </div>
     </div>
   );
 };
